@@ -1,29 +1,28 @@
 package testOpenAi;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import java.io.IOException;
+import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.net.URI;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-public class App {
+public class App2 {
     // API key
     private static final String KEY = new Key().getKey();
     // https://platform.openai.com/docs/api-reference/authentication
     private static final String OPEN_AI_URL = "https://api.openai.com/v1/chat/completions";
 
     public static void main(String[] args) {
-        String text = "這是測試Open AI翻譯的文字內容";
+        String text = "我忘記密碼，帳號被鎖定了怎麼辦";
         try{
             List<Message> messages = new ArrayList<>();
             // 先定義要Open AI 的功能
-            messages.add(new Message("system", "你是一位翻譯助手，請幫忙將中文翻譯成英文及日文"));
+            messages.add(new Message("system", "你是一位網站客服，請幫忙回答使用者一般網站常發生的問題"));
             // 再傳送要gpt處理的事件內容
             messages.add(new Message("user", text));
             // 用google的gson 套件將java物件轉成json物件
